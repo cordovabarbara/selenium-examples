@@ -1,5 +1,4 @@
-# Selenium Python Practice
-
+# Practica de  Selenium con Python 
 Este repositorio contiene los primeros ejercicios con **Selenium en Python**.  
 Incluye ejemplos de:
 - Formularios y envío de inputs
