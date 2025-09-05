@@ -6,17 +6,21 @@ driver = webdriver.Chrome()
 driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers")
 driver.maximize_window()
 
-sortedVeggies = []
-#click on colum header
-driver.find_element(By.XPATH,"//span[text()='Veg/fruit name']").click()
-#collect all veggies names -> veggieList (A,B,C)
-veggieWebElements = driver.find_elements(By.XPATH,"//tr/td[1]")
-for element in veggieWebElements:
-    sortedVeggies.append(element.text)
+# Click en el encabezado para ordenar por nombre
+driver.find_element(By.XPATH, "//span[text()='Veg/fruit name']").click()
 
-originalSortedList = sortedVeggies.copy()
+# Extraer todos los nombres de vegetales
+veggieWebElements = driver.find_elements(By.XPATH, "//tr/td[1]")
+web_sorted_veggies = [el.text for el in veggieWebElements]
 
-# Sort this veggieList -> newSortedList
-sortedVeggies.sort()
+# Crear una copia ordenada con Python
+code_sorted_veggies = sorted(web_sorted_veggies, key=lambda x: x.lower())
 
-assert sortedVeggies == originalSortedList,"La tabla no está ordenada correctamente por nombre Veg/fruit name"
+# Comparar
+assert web_sorted_veggies == code_sorted_veggies, (
+    f"La tabla no está ordenada correctamente.\n"
+    f"Esperado: {code_sorted_veggies}\n"
+    f"Obtenido: {web_sorted_veggies}"
+)
+
+driver.quit()
