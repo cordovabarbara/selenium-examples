@@ -51,7 +51,6 @@ error_message = WebDriverWait(driver, 5).until(
 
 print("Mensaje de error:", error_message)
 
-
 # cerrar el navegador
 driver.quit()
 
